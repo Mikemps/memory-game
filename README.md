@@ -1,3 +1,3 @@
-# Vinícius Alves Amorim
-# Micael Pereira da Silva
-- Jogo da Memoria
+# Jogo da Memoria
+- Micael Pereira da Silva
+- Vinícius Alves Amorim
