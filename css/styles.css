@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #001F3F;
+    --secondary-color: #EEEEEE;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+
+#title {
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    height: 50rem;
+    width: 50rem;
+    padding: 2rem;
+    gap: 3.5rem;
+    background-color: var(--primary-color);
+    border: 0.2rem solid var(--secondary-color);
+    border-radius: 1rem;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.menu-options button {
+    width: 60%;
+    font-size: 1.5rem;
+    border-radius: 0.8rem;
+}
