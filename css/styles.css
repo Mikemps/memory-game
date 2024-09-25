@@ -1,0 +1,53 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "shojumaru", sans-serif;
+}
+:root {
+  --primary-color: #070219;
+  --secondary-color: #fec107;
+}
+
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+
+#title {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--secondary-color);
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  height: 50rem;
+  width: 50rem;
+  padding: 11rem;
+  gap: 3.5rem;
+  background-color: var(--primary-color);
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menu-options button {
+  width:90%;
+  font-size: 1.5rem;
+  padding: 5px 10px 5px 10px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 3px solid var(--secondary-color);
+}
