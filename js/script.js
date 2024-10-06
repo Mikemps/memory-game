@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('back-to-menu-from-ranking-button').addEventListener('click', backToMenu);
     document.getElementById('restart-button').addEventListener('click', playGame);
 
-
     // Função para iniciar o jogo
     function playGame() {
         playerName = document.getElementById('player-name-input').value;
@@ -85,11 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardsContainer = document.getElementById('cards-container');
         cardsContainer.innerHTML = '';
         
-        let cardSet = isHardMode ? characters.concat(characters.concat(characters)) 
-                                 : characters.concat(characters);
+        let cardSet = isHardMode ? characters.concat(characters.concat(characters)) : characters.concat(characters); 
         
-        cardSet = shuffleCards(cardSet.slice(0, isHardMode ? 24 : 16));
-
+        cardSet = shuffleCards(cardSet.slice(0, isHardMode ? 30 : 20));
+        totalCards = cardSet.length;
 
         cardSet.forEach((cardData) => {
             const card = document.createElement('div');
@@ -124,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('game').classList.toggle('easy', !isHardMode);
     }
 
-    // Função para iniciar o temporizador
     function startTimer() {
         let timeRemaining = isHardMode ? 60 : 80;
 
@@ -137,9 +134,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (timeRemaining === 0) {
                 //clearInterval(timerInterval);
-                endGame();
+                endGame(true);
             }
         }, 1000);
+    }
+
+    function checkMatch() {
+        const names = flippedCards.map(card => card.getAttribute('data-name'));
+        
+        if (new Set(names).size === 1) {
+            flippedCards.forEach(card => {
+                card.classList.add('matched');
+            });
+            score += 10;
+            matchedCards += flippedCards.length;
+            document.getElementById('score').innerText = `Score: ${score}`;
+            flippedCards = [];
+        
+            if (matchedCards === totalCards)
+                endGame(false);
+        
+        } else {
+            setTimeout(() => {
+                flippedCards.forEach(card => card.classList.remove('flipped'));
+                flippedCards = [];
+            }, 1000);
+        }
     }
 
     function flipCard(event) {
@@ -155,34 +175,20 @@ document.addEventListener('DOMContentLoaded', () => {
             checkMatch();
     }
 
-    function checkMatch() {
-        const names = flippedCards.map(card => card.getAttribute('data-name'));
-        
-        if (new Set(names).size === 1) {
-            flippedCards.forEach(card => {
-                card.classList.add('matched');
-            });
-            score += 10;
-            matchedCards += flippedCards.length;
-            document.getElementById('score').innerText = `Pontuação: ${score}`;
-            flippedCards = [];
-        
-            if (matchedCards === characters.length)
-                endGame();
-        
-        } else {
-            setTimeout(() => {
-                flippedCards.forEach(card => card.classList.remove('flipped'));
-                flippedCards = [];
-            }, 1000);
-        }
-    }
-
-    function endGame() {
+    function endGame(isTimeUp = false) {
         clearInterval(timerInterval);
+
+        const titleElement = document.getElementById('game-result-title');
+    
+        if (isTimeUp) {
+            titleElement.textContent = 'Game Over';
+        } else {
+            titleElement.textContent = 'End Game';
+        }
         saveScore(score); 
         displayEndGameScreen();
     }
+
     function displayEndGameScreen() {
         const endGameScreen = document.getElementById('end-game-screen');
         const finalScoreDisplay = document.getElementById('final-score');
@@ -195,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('game').classList.add('hidden');
         endGameScreen.classList.remove('hidden');
     }
-    
+
     document.getElementById('play-again-button').addEventListener('click', () => {
         const endGameScreen = document.getElementById('end-game-screen');
         endGameScreen.classList.add('hidden'); 
@@ -231,11 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('ranking', JSON.stringify(ranking));
         }
     }
+
     function resetGame() {
         cards = [];
         flippedCards = [];
         score = 0;
         matchedCards = 0;
         clearInterval(timerInterval);
+        document.getElementById('score').innerText = `Score: ${score}`;
     }
 });
