@@ -11,6 +11,7 @@
 .hidden {
   display: none !important;
 }
+
 /* game menu style */
 body {
 	display: flex;
@@ -20,25 +21,22 @@ body {
 	background-color: var(--primary-color);
   overflow: hidden;
 }
-
 #player-name-input {
 	border: 2px solid var(--primary-color);
 	border-radius: 8px;
 	color: var(--primary-color);
-	font-size: 1em;
+	font-size: 1.5em;
 	margin-bottom: 15px;
 	max-width: 300px;
 	outline: none;
 	padding: 15px;
 	width: 100%;
 }
-
 #title {
 	text-align: center;
 	font-size: 4rem;
 	color: var(--secondary-color);
 }
-
 #game-menu {
 	display: flex;
 	flex-direction: column;
@@ -47,14 +45,12 @@ body {
 	padding: 10rem;
 	gap: 1.8rem;
 }
-
 .menu-options {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 1.2rem;
 }
-
 .menu-options button {
 	background-color: var(--primary-color);
   border: 3px solid var(--secondary-color);
@@ -84,7 +80,6 @@ body {
 	background-color: var(--primary-color);
 	background-size: cover;
 }
-
 #game-informations {
 	display: flex;
 	align-items: center;
@@ -98,20 +93,16 @@ body {
 	border-radius: 5px;
   opacity: 80%;
 }
-
 #cards-container {
 	display: grid;
 	gap: 1rem;
 }
-
 .easy #cards-container {
   grid-template-columns: repeat(4, auto);
 }
-
 .hard #cards-container {
   grid-template-columns: repeat(6, auto);
 }
-
 .card {
 	aspect-ratio: 1/1;
 	width: 120px;
@@ -120,17 +111,14 @@ body {
 	transform-style: preserve-3d;
 	background-color: var(--primary-color);
 }
-
 .card-image {
 	height: 100%;
 	width: 100%;
   border: 5px solid var(--secondary-color);
 }
-
 .card.flipped {
 	transform: rotateY(180deg);
-}
-  
+} 
 .card .front, .card .back {
   width: 100%;
   height: 100%;
@@ -153,7 +141,25 @@ body {
   opacity: 0.5;
   transition: filter 500ms ease;
 }
+#restart-button, #back-to-menu-from-ranking-button, #back-to-menu-from-game-button{
+  display: grid;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  max-width: 300px;
+  width: 100%;
+  padding: 2px 40px 2px 40px;
+  margin-top: 10px;
+}
+#restart-button:hover, #back-to-menu-from-ranking-button:hover, #back-to-menu-from-game-button:hover{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
 
+/* ranking style */
 .ranking-title {
   font-size: 2.5em; 
   color: var(--secondary-color);
@@ -188,28 +194,11 @@ body {
   background-color: var(--secondary-color);
   border-radius: 8px; 
 }
-
-#restart-button, #back-to-menu-from-ranking-button, #back-to-menu-from-game-button{
-  display: grid;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  border: 3px solid var(--secondary-color);
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1em;
-  max-width: 300px;
-  width: 100%;
-  padding: 2px 40px 2px 40px;
-  margin-top: 10px;
-}
 #back-to-menu-from-ranking-button {
   padding: 10px 10px 
 }
-#restart-button:hover, #back-to-menu-from-ranking-button:hover, #back-to-menu-from-game-button:hover{
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-}
 
+/* end game style */
 #end-game-screen {
   display: flex;
   flex-direction: column;
