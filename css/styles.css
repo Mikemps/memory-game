@@ -153,6 +153,7 @@ body {
   opacity: 0.5;
   transition: filter 500ms ease;
 }
+
 .ranking-title {
   font-size: 2.5em; 
   color: var(--secondary-color);
@@ -208,6 +209,7 @@ body {
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
+
 #end-game-screen {
   display: flex;
   flex-direction: column;
